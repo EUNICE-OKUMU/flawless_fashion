@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flawless Fashion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        /* CSS for header */
+        .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f7f0;
+}
+
+.header .logo {
+  font-size: 25px;
+  font-family: 'Sriracha', cursive;
+  color: #000;
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c3dabc;
+  margin-right: 20px;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: #2d0fda;
+  padding: 35px 20px;
+}
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes full height */
+        }
+
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: hwb(120 95% 5%);
+            color: rgb(8, 154, 168);
+        }
+
+        .team-section {
+            display: flex;
+            justify-content: center; /* Center team members */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            padding: 20px;
+        }
+
+        .column {
+            flex: 1;
+            max-width: 300px; /* Limit the width */
+            margin: 10px; /* Space between cards */
+            box-shadow: 0 4px 8px 0 rgba(19, 96, 212, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .title {
+            color: rgb(184, 225, 20);
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: rgb(223, 150, 23);
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        /* CSS for footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #c4e9b8;
+            padding: 40px 80px;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer .copy {
+            color: #e20d78;
+        }
+
+        .bottom-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .bottom-links .links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .bottom-links .links span {
+            font-size: 30px;
+            color: #e91616;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .bottom-links .links a {
+            text-decoration: none;
+            color: #2c12c2;
+            padding: 10px 20px;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                flex: 1 0 100%; /* Stack columns on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+      <a href="profile.html" class="logo">FLAWLESS FASHION</a>
+      <nav class="nav-items">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="product.html">Products</a>
+          <a href="signup.html">Sign Up</a>
+          <a href="rating.html">Ratings</a>
+      </nav>
+  </header>
+
+    <div class="about-section">
+        <h1>ABOUT FLAWLESS FASHION</h1>
+        <p>Flawless fashion is a clothing and accessories that are well chosen, well fitting, and well coordinated. It is a style that is effortless and elegant hence appropriate for any occasion.</p>
+        <p>It is all about confidence and self-expression; it is about wearing clothes that make you feel your best and represent your unique personality.</p>
+    </div>
+
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="team-section">
+        <div class="column">
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0259/7103/2124/products/04_5e44a4e3-e8e5-4533-bc6b-6ee091852739_271x.progressive.jpg?v=1677146332.png" alt="EUNICE">
+                <div class="container">
+                    <h2>OKUMU EUNICE</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>I am the CEO and Founder of Flawless Fashion with over 10 years of experience in the fashion industry. I am passionate about creating high-quality, on-trend fashion that is accessible to everyone.</p>
+                    <p>okumueunice180@gmail.com</p>
+                    <p><button class="button">Contact 0714709439</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0259/7103/2124/products/45_b16d32b0-68c7-4189-b4cd-b986f927aaf6_271x.progressive.jpg?v=1677146174.png" alt="ANTONY">
+                <div class="container">
+                    <h2>ALICE BRENDA</h2>
+                    <p class="title">Art Director</p>
+                    <p>I am a visionary art director with over 10 years of experience in the advertising industry. I have a proven track record of leading teams to create visually stunning and effective advertising campaigns.</p>
+                    <p>Okumualice@gmail.com</p>
+                    <p><button class="button">Contact 0780134635</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0259/7103/2124/products/29_f59e4f13-7baa-4324-a68c-1a00abb27c7b_270x.jpg" alt="EVERLINE">
+                <div class="container">
+                    <h2>EVERLINE ACHIENG</h2>
+                    <p class="title">Designer</p>
+                    <p>I am a creative and passionate designer with experience in the clothing industry. I have a proven track record of leading teams to create high-quality, on-trend designs.</p>
+                    <p>okumueverline@gmail.com</p>
+                    <p><button class="button">Contact  0740347632</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="copy">&copy; NYAGOL'S</div>
+        <div class="bottom-links">
+            <div class="links">
+                <span>More Info</span>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="signup.htm">Sign Up</a>
+                <a href="product.html">PRODUCTS</a>
+                <a href="rating.html">Ratings</a>
+            </div>
+            <div class="links">
+                <span>Social Links</span>
+                <ul>
+                    <li><a href="https://www.tiktok.com/@euniceokumu772" target="_blank">TikTok</a></li>
+                    <li><a href="https://twitter.com/okumu7_okumu" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.instagram.com/okumu8526" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.snapchat.com/add/eunice_o248267" target="_blank">Snapchat</a></li>
+                    <li><a href="https://www.linkedin.com/in/Eunice-Okumu" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/Eunice-Okumu" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        async function fetchTeamMembers() {
+            try {
+                const response = await fetch('fetch_team.php'); // Fetch team data
+                const teamMembers = await response.json();
+                const teamSection = document.getElementById('team-section');
+
+                teamMembers.forEach(member => {
+                    const memberDiv = document.createElement('div');
+                    memberDiv.className = 'column';
+                    memberDiv.innerHTML = `
+                        <div class="card">
+                            <img src="${member.image_url}" alt="${member.name}">
+                            <div class="container">
+                                <h2>${member.name}</h2>
+                                <p class="title">${member.position}</p>
+                                <p>${member.description || 'No description available.'}</p>
+                                <p>${member.email}</p>
+                                <p><button class="button">Contact ${member.phone}</button></p>
+                            </div>
+                        </div>
+                    `;
+                    teamSection.appendChild(memberDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching team members:', error);
+            }
+        }
+
+        // Fetch team members when the page loads
+        document.addEventListener('DOMContentLoaded', fetchTeamMembers);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

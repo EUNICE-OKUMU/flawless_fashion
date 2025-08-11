@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <style>
+        /* Add your CSS styles here */
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Search</h1>
+    
+    <input type="text" id="searchInput" placeholder="Search products">
+    
+    <ul id="productList">
+        <main>
+            <section class="products">
+                <!-- Product listings with buttons to add to cart -->
+                <article class="product">
+                    <h2>Product 1</h2>
+                    <p>Price: ksh 20000</p>
+                    <button onclick="addToCart('Product 1', 20000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 2</h2>
+                    <p>Price: ksh 45000</p>
+                    <button onclick="addToCart('Product 2', 45000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 3</h2>
+                    <p>Price: ksh 15000</p>
+                    <button onclick="addToCart('Product 3', 15000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 4</h2>
+                    <p>Price: ksh 25000</p>
+                    <button onclick="addToCart('Product 4', 25000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 5</h2>
+                    <p>Price: ksh 40000</p>
+                    <button onclick="addToCart('Product 5', 40000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 6</h2>
+                    <p>Price: ksh 18000</p>
+                    <button onclick="addToCart('Product 6', 18000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 7</h2>
+                    <p>Price: ksh 30000</p>
+                    <button onclick="addToCart('Product 7', 30000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 8</h2>
+                    <p>Price: ksh 16500</p>
+                    <button onclick="addToCart('Product 8', 16500)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 9</h2>
+                    <p>Price: ksh 28000</p>
+                    <button onclick="addToCart('Product 9', 28000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 10</h2>
+                    <p>Price: ksh 39000</p>
+                    <button onclick="addToCart('Product 10', 39000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 11</h2>
+                    <p>Price: ksh 9000</p>
+                    <button onclick="addToCart('Product 11', 9000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 12</h2>
+                    <p>Price: ksh 5000</p>
+                    <button onclick="addToCart('Product 12', 5000)">Add to Cart</button>
+                </article>
+                <article class="product">
+                    <h2>Product 13</h2>
+                    <p>Price: ksh 4500</p>
+                    <button onclick="addToCart('Product 13', 4500)">Add to Cart</button>
+                </article>
+                <!-- Add more product articles as needed -->
+            </section>
+            <section class="cart">
+                <h2>Your Shopping Cart</h2>
+                <ul id="cart-items">
+                    <!-- Cart items will be displayed here dynamically using JavaScript -->
+                </ul>
+                <p>Total: ksh<span id="cart-total">0.00</span></p>
+            </section>
+        </main>
+    </ul>
+    
+    <script>
+        // JavaScript for searching products
+        const searchInput = document.getElementById('searchInput');
+        const productList = document.getElementById('productList');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const productItems = productList.getElementsByTagName('li');
+            
+            for (let i = 0; i < productItems.length; i++) {
+                const productItem = productItems[i];
+                const productText = productItem.textContent.toLowerCase();
+                
+                if (productText.includes(searchTerm)) {
+                    productItem.style.display = 'block';
+                } else {
+                    productItem.style.display = 'none';
+                }
+            }
+        });
+    </script>
+    <style>
+        /* Styles for products and cart */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+.product {
+    background-color: #cea917;
+    border: 1px solid #d00808;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product button {
+    background-color: #007bff;
+    color: rgb(89, 189, 22);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #0056b3;
+}
+
+.cart {
+    margin: 30px;
+    padding: 10px;
+    background-color: #2217f5;
+    border: 1px solid #e91038;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .products {
+        flex-direction: column;
+    }
+    .product {
+        width: 100%;
+    }
+}
+
+    </style>
+</body>
+</html>

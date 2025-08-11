@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAWLESS FASHION</title>
+    <header class="header">
+        <a href="profile.html" class="logo">FLAWLESS FASHION</a>
+        <nav class="nav-items">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="product.html">Products</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="rating.html">Ratings</a>
+        </nav>
+    </header>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center">
+            <h2>Contact Us</h2>
+            <p>To inquire about a product, to place an order, to troubleshoot a problem, to provide feedback, or leave us a message:</p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="https://cdn.shopify.com/s/files/1/0259/7103/2124/products/37_6d0b5acc-19fa-407e-96eb-7956f12be496_271x.progressive.jpg?v=1679547745.png" style="width:100%">
+            </div>
+            <div class="column">
+                <form id="contact-form" method="POST">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                  <option value="kenya">Kenya</option>
+                  <option value="uganda">Uganda</option>
+                  <option value="rwanda">Rwanda</option>
+                  <option value="australia">Australia</option>
+                  <option value="tanzania">Tanzania</option>
+              </select>
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" required></textarea>
+              <input type="submit" value="Submit">
+          </form>
+          <div id="response-message" style="margin-top: 20px;"></div> <!-- Response Message -->
+      </div>
+  </div>
+</div>
+
+      <style>
+        
+        /* CSS for header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f0f7f0;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family: 'Sriracha', cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #c3dabc;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #2d0fda;
+      padding: 35px 20px;
+    }* {
+  box-sizing: border-box;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e51717;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: rgb(20, 225, 64);
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f1f1eb;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* CSS for footer */
+.footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #c4e9b8;
+      padding: 40px 80px;
+    }
+
+    .footer .copy {
+      color: #e20d78;
+    }
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .bottom-links .links span {
+      font-size: 30px;
+      color: #e91616;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration:wavy;
+      color: #2c12c2;
+      padding: 10px 20px;
+    }
+
+      </style>
+     <script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const nameValue = document.getElementById('name').value.trim();
+        const emailValue = document.getElementById('email').value.trim();
+        const messageValue = document.getElementById('message').value.trim();
+        const responseMessage = document.getElementById('response-message');
+    
+        fetch('contact_submit.php', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: new URLSearchParams({
+    name: document.querySelector('#name').value,
+    email: document.querySelector('#email').value,
+    message: document.querySelector('#message').value
+  })
+})
+.then(response => response.json())
+.then(data => {
+  if (data.status === 'success') {
+    alert(data.message);
+  } else {
+    alert('Submission failed: ' + data.message);
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+  alert('Something went wrong.');
+});
+document.querySelector('#contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent default form submission
+  // Fetch logic here
+});
+
+    </script>
+    
+      
+      <footer class="footer">
+        <div class="copy">&copy; NYAGOL'S</div>
+        <div class="bottom-links">
+          <div class="links">
+            <span>More Info</span>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="signup.htm">Sign Up</a>
+            <a href="product.html">PRODUCTS</a>
+            <a href="rating.html">Ratings</a>
+          </div>
+          
+          <div class="links">
+            <span>Social Links</span>
+            <ul>
+              <li><a href="https://www.tiktok.com/@euniceokumu772" target="_blank">TikTok</a></li>
+              <li><a href="https://twitter.com/okumu7_okumu" target="_blank">Twitter</a></li>
+              <li><a href="https://www.instagram.com/okumu8526" target="_blank">Instagram</a></li>
+              <li><a href="https://www.snapchat.com/add/eunice_o248267" target="_blank">Snapchat</a></li>
+              <li><a href="https://www.linkedin.com/in/Eunice Okumu" target="_blank">LinkedIn</a></li>
+              <li><a href="https://www.facebook.com/Eunice Okumu" target="_blank">Facebook</a></li>
+          </ul>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAWLESS FASHION - Login/Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+		 .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f0f7f0;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family: 'Sriracha', cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #c3dabc;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #2d0fda;
+      padding: 35px 20px;
+    }
+    /* CSS for footer */
+	.footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #c4e9b8;
+      padding: 40px 80px;
+    }
+
+    .footer .copy {
+      color: #e20d78;
+    }
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .bottom-links .links span {
+      font-size: 30px;
+      color: #e91616;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration:wavy;
+      color: #2c12c2;
+      padding: 10px 20px;
+    }
+        /* Include your existing styles here */
+
+        /* Additional styling for forms */
+        .form-section {
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .login-box, .signup-box {
+            display: none; /* Hide both initially */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .login-box.active, .signup-box.active {
+            display: flex; /* Show the active one */
+        }
+
+        .ele {
+            margin: 10px 0; /* Space between inputs */
+        }
+
+        .clkbtn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+		<a href="profile.html" class="logo">FLAWLESS FASHION</a>
+		<nav class="nav-items">
+			<a href="index.html">Home</a>
+			<a href="about.html">About</a>
+			<a href="contact.html">Contact</a>
+			<a href="product.html">Products</a>
+			<a href="signup.html">Sign Up</a>
+			<a href="rating.html">Ratings</a>
+		</nav>
+	</header>
+    
+    <div class="container">
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">Signup</button>
+        </div>
+
+        <div class="form-section">
+            <!-- login form -->
+			<div class="login-box active">
+				<form action="login.php" method="POST">
+					<input type="email" class="email ele" name="email" placeholder="youremail@email.com" required>
+					<input type="password" class="password ele" name="password" placeholder="password" required>
+					<button type="submit" class="clkbtn">Login</button>
+					<p>Don't have an account? <span class="toggle">Sign Up</span></p>
+				</form>
+			</div>
+
+            <!-- signup form -->
+			<div class="signup-box">
+				<form action="register.php" method="POST">
+					<input type="text" class="name ele" name="username" placeholder="Enter your name" required>
+					<input type="email" class="email ele" name="email" placeholder="youremail@email.com" required>
+					<input type="password" class="password ele" name="password" placeholder="password" required>
+					<input type="password" class="password ele" name="confirm_password" placeholder="Confirm password" required>
+					<button type="submit" class="clkbtn">Signup</button>
+					<p>Already have an account? <span class="toggle">Login</span></p>
+				</form>
+			</div>
+        </div>
+    </div>
+
+    <script>
+      const signupButton = document.querySelector(".signup");
+const loginButton = document.querySelector(".login");
+const loginBox = document.querySelector(".login-box");
+const signupBox = document.querySelector(".signup-box");
+const toggleLinks = document.querySelectorAll(".toggle");
+
+signupButton.addEventListener("click", () => {
+    loginBox.classList.remove("active");
+    signupBox.classList.add("active");
+});
+
+loginButton.addEventListener("click", () => {
+    signupBox.classList.remove("active");
+    loginBox.classList.add("active");
+});
+
+// Add event listener for toggle links
+toggleLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        loginBox.classList.toggle("active");
+        signupBox.classList.toggle("active");
+    });
+});
+		
+    </script>
+	 <footer class="footer">
+        <div class="copy">&copy; NYAGOL'S</div>
+        <div class="bottom-links">
+          <div class="links">
+            <span>More Info</span>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="signup.htm">Sign Up</a>
+            <a href="product.html">PRODUCTS</a>
+            <a href="rating.html">Ratings</a>
+          </div>
+          
+          <div class="links">
+            <span>Social Links</span>
+            <ul>
+              <li><a href="https://www.tiktok.com/@euniceokumu772" target="_blank">TikTok</a></li>
+              <li><a href="https://twitter.com/okumu7_okumu" target="_blank">Twitter</a></li>
+              <li><a href="https://www.instagram.com/okumu8526" target="_blank">Instagram</a></li>
+              <li><a href="https://www.snapchat.com/add/eunice_o248267" target="_blank">Snapchat</a></li>
+              <li><a href="https://www.linkedin.com/in/Eunice Okumu" target="_blank">LinkedIn</a></li>
+              <li><a href="https://www.facebook.com/Eunice Okumu" target="_blank">Facebook</a></li>
+          </ul>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

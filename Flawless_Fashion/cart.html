@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYAGOL'S FASHION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>NYAGOL'S FASHION</h1>
+    </header>
+    <main>
+        <section class="products">
+            <!-- Product listings with buttons to add to cart -->
+            <article class="product">
+                <h2>Product 1</h2>
+                <p>Price: ksh 6990</p>
+                <button onclick="addToCart('Product 1', 19.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 2</h2>
+                <p>Price: ksh 5790</p>
+                <button onclick="addToCart('Product 2', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 3</h2>
+                <p>Price: ksh 5790</p>
+                <button onclick="addToCart('Product 3', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 4</h2>
+                <p>Price: ksh 5990</p>
+                <button onclick="addToCart('Product 4', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 5</h2>
+                <p>Price: ksh 5990</p>
+                <button onclick="addToCart('Product 5', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 6</h2>
+                <p>Price: ksh 3290</p>
+                <button onclick="addToCart('Product 6', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 7</h2>
+                <p>Price:ksh 3290</p>
+                <button onclick="addToCart('Product 7', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 8</h2>
+                <p>Price: ksh 3690</p>
+                <button onclick="addToCart('Product 8', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 9</h2>
+                <p>Price: ksh 3450</p>
+                <button onclick="addToCart('Product 9', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 10</h2>
+                <p>Price: ksh 2500</p>
+                <button onclick="addToCart('Product 10', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 11</h2>
+                <p>Price: ksh 2990</p>
+                <button onclick="addToCart('Product 11', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 12</h2>
+                <p>Price: ksh 3990</p>
+                <button onclick="addToCart('Product 12', 24.99)">Add to Cart</button>
+            </article>
+            <article class="product">
+                <h2>Product 13</h2>
+                <p>Price: ksh 3690</p>
+                <button onclick="addToCart('Product 2', 24.99)">Add to Cart</button>
+            </article>
+            <!-- Add more product articles as needed -->
+        </section>
+        <section class="cart">
+            <h2>Your Shopping Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be displayed here dynamically using JavaScript -->
+            </ul>
+            <p>Total: ksh<span id="cart-total">0.00</span></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; NYAGOL'S FASHION</p>
+    </footer>
+    <script src="script.js">
+        // Function to add items to the cart
+function addToCart(productName, price) {
+    // Create a new list item for the cart
+    var listItem = document.createElement("li");
+    listItem.textContent = productName + " - $" + price.toFixed(2);
+
+    // Add the list item to the cart
+    document.getElementById("cart-items").appendChild(listItem);
+
+    // Update the cart total
+    var currentTotal = parseFloat(document.getElementById("cart-total").textContent);
+    currentTotal += price;
+    document.getElementById("cart-total").textContent = currentTotal.toFixed(2);
+}
+        // Function to fetch cart items from the API
+        async function fetchCartItems() {
+            try {
+                const response = await fetch('cart_operations.php'); // Call the API to get cart items
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const cartItems = await response.json(); // Parse the JSON response
+                displayCartItems(cartItems); // Call function to display cart items
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+
+        // Function to display cart items on the page
+        function displayCartItems(cartItems) {
+            const container = document.getElementById('cart-container');
+            container.innerHTML = ''; // Clear existing content
+
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p>Your cart is empty.</p>'; // Handle case with no items
+                return;
+            }
+
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <h2>${item.product_name}</h2>
+                    <p>Price: Ksh ${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                `;
+                container.appendChild(itemDiv); // Append each item to the container
+            });
+        }
+
+        // Fetch cart items when the page loads
+        document.addEventListener('DOMContentLoaded', fetchCartItems);
+
+    </script>
+    <style>
+        /* Styles for products and cart */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+.product {
+    background-color: #cea917;
+    border: 1px solid #d00808;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product button {
+    background-color: #007bff;
+    color: rgb(89, 189, 22);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #0056b3;
+}
+
+.cart {
+    margin: 30px;
+    padding: 10px;
+    background-color: #2217f5;
+    border: 1px solid #e91038;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.cart-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 15px;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .products {
+        flex-direction: column;
+    }
+    .product {
+        width: 100%;
+    }
+}
+
+    </style>
+</body>
+</html>

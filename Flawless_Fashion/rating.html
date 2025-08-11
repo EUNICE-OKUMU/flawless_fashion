@@ -1,0 +1,224 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+    <meta charset="utf-8" /> 
+    <title>FLAWLESS FASHION</title> 
+    <header class="header">
+        <a href="profile.html" class="logo">FLAWLESS FASHION</a>
+        <nav class="nav-items">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="product.html">Products</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="rating.html">Ratings</a>
+        </nav>
+    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <link rel="stylesheet" href="styles.css" /> 
+</head> 
+
+<body> 
+    <div class="card"> 
+        <h1>PRODUCTS RATING</h1> 
+        <br /> 
+        <span onclick="setRating(1)" class="star">★</span> 
+        <span onclick="setRating(2)" class="star">★</span> 
+        <span onclick="setRating(3)" class="star">★</span> 
+        <span onclick="setRating(4)" class="star">★</span> 
+        <span onclick="setRating(5)" class="star">★</span> 
+        <h3 id="output">Rating is: 0/5</h3> 
+        <button id="submit-button" onclick="submitRating()">Submit Rating</button> <!-- Submit button -->
+    </div> 
+
+    <script>
+        let stars = document.getElementsByClassName("star"); 
+        let output = document.getElementById("output"); 
+        let selectedRating = 0; // Variable to store the selected rating
+
+        function setRating(n) { 
+            remove(); 
+            selectedRating = n; // Update selected rating
+            for (let i = 0; i < n; i++) { 
+                stars[i].classList.add("filled"); // Add filled class to the selected stars
+            } 
+            output.innerText = "Rating is: " + n + "/5"; 
+        } 
+
+        function remove() { 
+            for (let star of stars) { 
+                star.classList.remove("filled"); // Remove filled class from all stars
+            } 
+        }
+
+        // Function to submit the rating to the server
+        async function submitRating() {
+            if (selectedRating === 0) {
+                alert("Please select a rating before submitting.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('rating', selectedRating); // Add the selected rating
+            formData.append('product_id', 1); // Replace with actual product ID if needed
+            // formData.append('user_id', 1); // Optionally add user ID
+
+            try {
+                const response = await fetch('submit_rating.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json(); // Parse the JSON response
+                alert(result.message); // Display success or error message
+                remove(); // Clear the stars after submission
+                selectedRating = 0; // Reset selected rating
+                output.innerText = "Rating is: 0/5"; // Reset output display
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="copy">&copy; NYAGOL'S</div>
+        <div class="bottom-links">
+            <div class="links">
+                <span>More Info</span>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="signup.htm">Sign Up</a>
+                <a href="product.html">PRODUCTS</a>
+                <a href="rating.html">Ratings</a>
+            </div>
+            <div class="links">
+                <span>Social Links</span>
+                <ul>
+                    <li><a href="https://www.tiktok.com/@euniceokumu772" target="_blank">TikTok</a></li>
+                    <li><a href="https://twitter.com/okumu7_okumu" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.instagram.com/okumu8526" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.snapchat.com/add/eunice_o248267" target="_blank">Snapchat</a></li>
+                    <li><a href="https://www.linkedin.com/in/Eunice-Okumu" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/Eunice.Okumu" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* CSS for filled stars */
+        .star { 
+            font-size: 10vh; 
+            cursor: pointer; 
+        } 
+
+        .filled { 
+            color: gold; 
+        }
+
+        /* style.css */
+        /* CSS for header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f7f0;
+        }
+
+        .header .logo {
+            font-size: 25px;
+            font-family: 'Sriracha', cursive;
+            color: #000;
+            text-decoration: none;
+            margin-left: 30px;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #c3dabc;
+            margin-right: 20px;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: #2d0fda;
+            padding: 35px 20px;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        } 
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10;
+            padding: 7;
+        }
+
+        header {
+            background-color: #a3e210;
+            color: #0dcf8e;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .card { 
+            max-width: 50rem; 
+            background: #fff; 
+            margin: 1rem; 
+            padding: 1rem; 
+            box-shadow: 0 0 5px rgba(31, 242, 11, 0.2); 
+            width: 100%; 
+            border-radius: 2rem; 
+        } 
+
+        /* CSS for footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #c4e9b8;
+            padding: 40px 80px;
+        }
+
+        .footer .copy {
+            color: #e20d78;
+        }
+
+        .bottom-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .bottom-links .links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .bottom-links .links span {
+            font-size: 30px;
+            color: #e91616;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .bottom-links .links a {
+            text-decoration: wavy;
+            color: #2c12c2;
+            padding: 10px 20px;
+        }
+    </style>
+</body>
+
+</html>
